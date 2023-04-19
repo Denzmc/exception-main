@@ -43,10 +43,20 @@ Requirements:
 public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        int id = Integer.parseInt(reader.readLine());
-        String name = reader.readLine();
-
-        System.out.println("Id=" + id + " Name=" + name);
+        Map<String, Integer> map = new HashMap<>();
+        int id = 0;
+        String name = "";
+        while (true){
+            try {
+                id = Integer.parseInt(reader.readLine());
+                name = reader.readLine();
+                map.put(name, id);
+            }catch (NumberFormatException e){
+                break;
+            }
+        }
+        for (String s: map.keySet()){
+            System.out.println(map.get(s)+" "+s);
+        }
     }
 }

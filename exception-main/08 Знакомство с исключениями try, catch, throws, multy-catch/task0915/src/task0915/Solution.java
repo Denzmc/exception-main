@@ -33,10 +33,15 @@ public class Solution {
     public static StatelessBean BEAN = new StatelessBean();
 
     public static void main(String[] args) {
-        handleExceptions();
+        try {
+            handleExceptions();
+        } catch (FileSystemException e) {
+            BEAN.log(e);
+            e.printStackTrace();
+        }
     }
 
-    public static void handleExceptions() {
+    public static void handleExceptions() throws FileSystemException {
         BEAN.methodThrowExceptions();
     }
 
@@ -45,14 +50,16 @@ public class Solution {
             System.out.println(exception.getMessage() + ", " + exception.getClass().getSimpleName());
         }
 
-        public void methodThrowExceptions() throws CharConversionException, FileSystemException, IOException {
+        public void methodThrowExceptions() throws FileSystemException {
             int i = (int) (Math.random() * 3);
             if (i == 0) {
-                throw new CharConversionException();
+                BEAN.log(new CharConversionException("CharConversationException"));
+
             } else if (i == 1) {
+                BEAN.log(new FileSystemException("File System Exception"));
                 throw new FileSystemException("");
             } else if (i == 2) {
-                throw new IOException();
+                BEAN.log(new IOException("IOException"));
             }
         }
     }

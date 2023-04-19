@@ -1,6 +1,7 @@
 package task1012;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,13 +38,33 @@ public class Solution {
                 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц',
                 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
 
-        // Ввод строк
+
         ArrayList<String> list = new ArrayList<String>();
         for (int i = 0; i < 10; i++) {
             String line = reader.readLine();
             list.add(line.toLowerCase());
         }
+        StringBuilder sb = new StringBuilder();
 
-        // напишите тут ваш код
+        for (String s: list){
+            sb.append(s);
+        }
+        String text = sb.toString();
+        char[] textArr = text.toCharArray();
+
+        for (Character ch: alphabet ) {
+            int sum = 0;
+            for (char a: textArr){
+                if (a == ch){
+                    ++sum;
+                }
+            }
+            System.out.println(ch +" : " + sum);
+        }
+
+
+
+        System.out.println();
+
     }
 }

@@ -28,9 +28,9 @@ public class Solution {
 
         Solution.D = 5;
     }
-//
-//    public int getA() {
-//        return A;
-//    }
+
+    public int getA() {
+        return A;
+    }
 
 }
